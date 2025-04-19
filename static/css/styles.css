@@ -1,0 +1,306 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    text-decoration: none;
+    list-style: none;
+}
+:root{
+    --bg-color: #222327;
+    --text-color: #fff;
+    --main-color: #29fd53;        
+}
+body{
+    min-height: 100vh;
+    min-width: 100%;
+    background: var(--bg-color);
+    color: var(--text-color);
+}
+header{
+    position: fixed;
+    width: 100%;
+    top: 0;
+    right: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: transparent;
+    padding: 28px 12%;
+    transition: all .50s ease;
+}
+.logo{
+    display: flex;
+    align-items: center;
+}
+.logo i{
+    color: var(--main-color);
+    font-size: 38px;
+    margin-right: 3px;
+}
+.logo span{
+    color: var(--text-color);
+    font-size: 1.7rem;
+    font-weight: 600;
+}
+.navbar{
+    display: flex;
+}
+.navbar a{
+    color: var(--text-color);
+    font-size: 1.1rem;
+    font-weight: 500;
+    padding: 5px 0;
+    margin: 0px 30px;
+    transition: all .50s ease;
+}
+.navbar a:hover{
+    color: #ff7b00;
+}
+.navbar a.active{
+    color: var(--main-color);
+}
+.main{
+    display: flex;
+    align-items: center;
+}
+.main a{
+    margin-right: 25px;
+    margin-left: 10px;
+    color: var(--text-color);
+    font-size: 1.1rem;
+    font-weight: 500;
+    transition: all .50s ease;
+}
+.user{
+    display: flex;
+    align-items: center;
+}
+.user i{
+    color: var(--main-color);
+    font-size: 28px;
+    margin-right: 7px;
+}
+.main a:hover{
+    color: var(--main-color);
+}
+#menu-icon{
+    font-size: 35;
+    color: var(--text-color);
+    cursor: pointer;
+    z-index: 10001;
+    display: none;
+}
+@media (max-width: 1280px ) {
+    header{
+        padding: 14px 2%;
+        transition: .2s;
+    }
+    .navbar a{
+        padding: 5px 0;
+        margin: 0px 5px;
+    }
+}
+@media (max-width: 1090px ) {
+    section{
+        min-height: 100vh;
+        padding: 0rem 9% 0rem;
+    }
+    #menu-icon{
+        display: block;        
+    }
+    #next{
+        display: none;
+    }
+    #prev{
+        display: none;
+    }
+    #cont{
+        font-size: 1rem;
+    }
+
+    #H2H{
+        font-size: 2rem;
+        color: #f8e112; /* A bold yellow to pop on dark backgrounds */
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+    }
+    .navbar{
+        position: absolute ;
+        top: 100%;
+        right: -100%;
+        width: 270px;
+        height: 35vh;
+        background: var(--main-color);
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        border-radius: 10px;
+        transition: all .50s ease;
+    }
+    .navbar a{
+        display: block;
+        margin: 12px 0;
+        padding: 0px 25px;
+        transition: all .50s ease;
+    }
+    .navbar a:hover{
+        color: var(--text-color);
+        transform: translateY(5px);
+    }
+    .navbar a.active{
+        color: var(--text-color);
+    }
+    .navbar.open{
+        right: 2%;
+    }
+    .logo span{
+        font-size: 0.8rem;
+        font-weight: 400;
+    }
+    .main a{
+        font-size: 0.6rem;
+        font-weight: 300;
+    }
+    .thumbnail{
+        justify-content: start;
+    }
+    .slider .list .item .content h2{
+        font-size: 60px;
+    }
+    .arrows{
+        top: 10%;
+    }
+        
+}
+* css slider */
+.slider{
+    height: 100vh;
+    margin-top: -50px;
+    position: relative;
+}
+.slider .content h2 {
+    color: #f8e112; /* A bold yellow to pop on dark backgrounds */
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.7); /* Makes text pop over images */
+}
+.slider .list .item{
+    position: absolute;
+    inset: 0 0 0 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: .5s;
+}
+.slider .list .item img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.slider .list .item::after{
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background-image: linear-gradient(
+        to top, #000 40%, transparent
+    );
+}
+.slider .list .item .content{
+    position: absolute;
+    left: 10%;
+    top: 20%;
+    width: 500px;
+    max-width: 80%;
+    z-index: 1;
+}
+.slider .list .item .content p:nth-child(1){
+    letter-spacing: 10px;
+}
+.slider .list .item .content h2{
+    font-size: 100px;
+    margin: 0;
+}
+.slider .list .item.active{
+    opacity: 1;
+    z-index: 10;
+}
+@keyframes showContent {
+    to{
+        transform: translateY(0);
+        filter: blur(0);
+        opacity: 1;
+    }
+}
+.slider .list .item.active p:nth-child(1),
+.slider .list .item.active h2,
+.slider .list .item.active p:nth-child(3){
+    transform: translateY(30px);
+    filter: blur(20px);
+    opacity: 0;
+    animation: showContent .5s .7s ease-in-out 1 forwards;
+}
+.slider .list .item.active h2{
+    animation-delay: 1s;
+}
+.slider .list .item.active p:nth-child(3){
+    animation-duration: 1.3s;
+}
+.arrows{
+    position: absolute;
+    top: 30%;
+    right: 50px;
+    z-index: 100;
+}
+.arrows button{
+    background-color: #eee5;
+    border: none;
+    font-family: monospace;
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+    font-size: x-large;
+    color: #eee;
+    transition: .5s;
+}
+.arrows button:hover{
+    background-color: #eee;
+    color: black;
+}
+.thumbnail{
+    position: absolute;
+    bottom: 50px;
+    z-index: 11;
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    height: 250px;
+    padding: 0 50px;
+    box-sizing: border-box;
+    overflow: auto;
+    justify-content: center;
+}
+.thumbnail::-webkit-scrollbar{
+    width: 0;
+}
+.thumbnail .item{
+    width: 150px;
+    height: 220px;
+    filter: brightness(.5);
+    transition: .5s;
+    flex-shrink: 0;
+}
+.thumbnail .item img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+.thumbnail .item.active{
+    filter: brightness(1.5);
+}
+.thumbnail .item .content{
+    position: absolute;
+    inset: auto 10px 10px 10px;
+}
+/*The about page things*/

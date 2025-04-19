@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>®️Grand_Line®️</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <a href="#" class="logo"><i class="ri-home-heart-fill"></i><span>®️G_L(MMU)®️</span> </a>
+        <ul class="navbar">
+            <li><a href="{{ url_for('home_page') }}" class="active">Home</a> </li>
+            <li><a href="{{ url_for('about_page') }}">About the Creator</a></li>
+            <li><a href="{{ url_for('market_page') }}">Market</a></li>
+            <li><a href="{{ url_for('blog_page') }}">Blog</a></li>
+            <li><a href="{{ url_for('contact_page') }}"> Contact</a></li>
+        </ul>
+        <div class="main">
+            <a href="{{ url_for('login_page') }}" class="user"><i class="ri-user-fill"></i>Sign In</a>
+            <a href="{{ url_for('register_page') }}">Register</a>
+            <div class="bx bx-menu" id="menu-icon"></div>
+        </div>
+    </header>
+    {% block body %}{% endblock %}
+    <!--js-link-->
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

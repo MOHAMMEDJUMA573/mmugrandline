@@ -1,0 +1,214 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap');
+section{
+    min-height: 100vh;
+    padding: 5rem 9% 5rem;
+}
+.home{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8rem;
+    background-color: black;
+}
+span{
+    color: #29fd53;
+}
+.home-content h3{
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+.home-content p{
+    font-size: 1.6rem;
+}
+.home-img{
+    border-radius: 50%;
+}
+.home-img img{
+    position: relative;
+    width: 32vw;
+    border-radius: 50%;
+    box-shadow: 0 0 25px solid #29fd53;
+    cursor: pointer;
+    transition: 0.2s linear;
+}
+.home-img img:hover{
+    font-size: 1.8rem;
+    font-weight: 500;
+}
+.social-icons a{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 4rem;
+    height: 4rem;
+    background-color: transparent;
+    border: 0.2rem solid #29fd53;
+    font-size: 2rem;
+    border-radius: 50%;
+    margin: 3rem 1.5rem 3rem 0;
+    transition: 0.3s ease;
+    color: #29fd53;
+}
+.social-icons a:hover{
+    color: black;
+    transform: scale(1.3) translateY(-5px);
+    background-color: #29fd53;
+    box-shadow: 0  0 25px #29fd53;
+}
+.btn{
+    display: inline-block;
+    padding: 1rem 2.8rem;
+    background-color: black;
+    border-radius: 4rem;
+    font-size: 1.6rem;
+    color: #29fd53;
+    letter-spacing: 0.3rem;
+    font-weight: 600;
+    border: 2px solid #29fd53;
+    transition: 0.3s ease;
+    cursor: pointer;
+}
+.contact-info{
+    display: inline-block;
+    padding: 1rem 2.8rem;
+    background-color: black;
+    border-radius: 4rem;
+    font-size: 1.6rem;
+    color: #29fd53;
+    letter-spacing: 0.3rem;
+    font-weight: 600;
+    transition: 0.3s ease;
+    cursor: pointer;
+}
+.btn:hover{
+    transform: scale3d(1.03);
+    background-color: #29fd53;
+    color: black;
+    box-shadow: 0 0 25px #29fd53;
+}
+.typing-text{
+    font-size: 34px;
+    font-weight: 600;
+    min-width: 280px;
+}
+.typing-text span{
+    position: relative;
+}
+.typing-text span::before{
+    content: "software Developer";
+    color: #ff7b00;
+    animation: words 20s infinite;
+}
+.typing-text span::after{
+    content: "";
+    background-color: black;
+    position: absolute;
+    width: calc(100% + 8px);
+    height: 100%;
+    border-left: 3px solid black;
+    right: -8;
+    animation: cursor 0.6s infinite;
+}
+@keyframes cursor{
+    to{
+        border-left: 3px solid #b74b4b;
+    }
+}
+@keyframes words{
+    0%, 20%{
+        content: "Shisui";
+    }
+    21%, 40%{
+        content: "Sasuke";
+    }
+    41%, 60%{
+        content: "Madara";
+    }
+    61%, 80%{
+        content: "Uchiha";
+    }
+    81%, 100%{
+        content: "#irama";
+    }
+}
+/* Tablet & Mid-Screen Devices */
+@media (max-width: 1090px) {
+    .home {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        padding: 2rem;
+        gap: 2rem;
+    }
+
+    .home-content h3 {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+        font-weight: 400;
+    }
+
+    .home-content h1 {
+        font-size: 3.5rem;
+    }
+
+    .home-content p {
+        font-size: 1.1rem;
+        line-height: 1.6;
+    }
+
+    .home-img img {
+        width: 60vw;
+        margin-top: 2rem;
+    }
+
+    .contact-content {
+        border: 2px solid #ffa200;
+        border-radius: 1rem;
+        padding: 2rem;
+        box-sizing: border-box;
+        width: 100%;
+    }
+
+    .contact-info {
+        display: block;
+        padding: 10px;
+        background-color: black;
+        border-radius: 2rem;
+        font-size: 0.9rem;
+        color: #29fd53;
+        letter-spacing: 0.2rem;
+        font-weight: 600;
+        text-align: center;
+        margin: 1rem auto;
+        max-width: 90%;
+    }
+}
+
+/* Android & Small Phones */
+@media (max-width: 768px) {
+    .home {
+        flex-direction: column;
+        padding: 1rem;
+    }
+
+    .home-content h3 {
+        font-size: 2.2rem;
+    }
+
+    .home-content h1 {
+        font-size: 3rem;
+    }
+
+    .home-img img {
+        width: 80vw;
+        margin-top: 3rem;
+    }
+
+    .contact-info {
+        font-size: 0.8rem;
+        padding: 8px;
+        border-radius: 1rem;
+    }
+}

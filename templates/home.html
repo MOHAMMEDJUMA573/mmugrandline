@@ -1,0 +1,98 @@
+{% extends "layout.html" %}
+{% block body %}
+    <!-- slider -->
+
+    <div class="slider">
+        <!-- list Items -->
+        <div class="list">
+            <div class="item active">
+                <img src="{{ url_for('static', filename='images/img1.jpeg') }}">
+                <div class="content">
+                    <p>®️@hashirama®️</p>
+                    <h2 id="H2H">®️MMU_GL®️</h2>
+                    <p>
+                        Welcome to Comrade Marketplace!
+                        Buy, sell, and connect with fellow students. From textbooks to tech gadgets — everything you need is right here on campus.
+                    </p>
+                </div>
+            </div>
+            <div class="item">
+                <img src="{{ url_for('static', filename='images/img1.webp') }}">
+                <div class="content">
+                    <p>®️@hashirama®️</p>
+                    <h2 id="H2H">Buy & Sell</h2>
+                    <p>
+                        Sell your books, clothes, phones, or anything else in just a few clicks. Make money while helping a fellow comrade out.
+                    </p>
+                </div>
+            </div>
+            <div class="item">
+                <img src="{{ url_for('static', filename='images/img2.jpg') }}">
+                <div class="content">
+                    <p>®️@hashirama®️</p>
+                    <h2 id="H2H">Service?</h2>
+                    <p>
+                        Whether you do braids, printing, or design work — advertise it here and get noticed by other students.Whether you do braids, printing, or design work — advertise it here and get noticed by other students.
+                    </p>
+                </div>
+            </div>
+            <div class="item">
+                <img src="{{ url_for('static', filename='images/img3.jpg') }}">
+                <div class="content">
+                    <p>®️@hashirama®️</p>
+                    <h2 id="H2H">#1Comrade</h2>
+                    <p>
+                        We’re built by comrades, for comrades. All listings are local and visible only within the Multimedia University Of Kenya community.
+                    </p>
+                </div>
+            </div>
+            <div class="item">
+                <img src="{{ url_for('static', filename='images/img4.jpg') }}">
+                <div class="content">
+                    <p>®️@hashirama®️</p>
+                    <h2 id="H2H">Join_Us</h2>
+                    <p>
+                        Create an account and start exploring today. No fees, no stress — just a smart way to connect and trade.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="arrows">
+            <button id="prev"><</button>
+            <button id="next">></button>
+        </div>
+        <!-- thumbnail -->
+        <div class="thumbnail">
+            <div class="item active">
+                <img src="{{ url_for('static', filename='images/img1.jpeg') }}">
+                <div class="content">
+                    ®️MMU_GL®️
+                </div>
+            </div>
+            <div class="item">
+                <img src="{{ url_for('static', filename='images/img1.webp') }}">
+                <div class="content">
+                    ®️MARKET®️
+                </div>
+            </div>
+            <div class="item">
+                <img src="{{ url_for('static', filename='images/img2.jpg') }}">
+                <div class="content">
+                    ®️TRADE®️
+                </div>
+            </div>
+            <div class="item">
+                <img src="{{ url_for('static', filename='images/img3.jpg') }}">
+                <div class="content">
+                    ®️#1COMRADE®️
+                </div>
+            </div>
+            <div class="item">
+                <img src="{{ url_for('static', filename='images/img4.jpg') }}">
+                <div class="content">
+                    ®️Join_Us®️
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
