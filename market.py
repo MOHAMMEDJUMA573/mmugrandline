@@ -16,7 +16,12 @@ def about_page():
 # Market route
 @app.route("/market")
 def market_page():
-    return render_template("market.html")
+    items = [
+        {'id': 1, 'name': 'Me!', 'barcode': '01', 'price': "priceless"},
+        {'id': 2, 'name': 'You', 'barcode': '02', 'price': 50},
+        {'id': 3, 'name': 'We!', 'barcode': '03', 'price': "-50+Me!"}
+    ]
+    return render_template('market.html', items=items)
 # Contact route
 @app.route("/contact")
 def contact_page():
@@ -33,6 +38,7 @@ def login_page():
 @app.route("/register")
 def register_page():
     return render_template("register.html")
+#logging in route
 @app.route("/logging")
 def logging_page():
     return render_template("not.html")

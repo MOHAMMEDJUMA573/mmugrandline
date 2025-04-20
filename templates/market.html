@@ -1,4 +1,66 @@
-{% extends "layout.html" %}
-{% block body %}
-    <h1 style="margin-top: 70px; padding: 40px;">Not Yet!😂... Coming Soon</h1> 
-{% endblock %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>®️Grand_Line®️</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap" rel="stylesheet">
+</head>
+<body id="mrktb" class="mkrtbay">
+    <header style="padding-bottom: 50px;">
+        <a href="#" class="logo"><i class="ri-home-heart-fill"></i><span>®️G_L(MMU)®️</span> </a>
+        <ul class="navbar">
+            <li><a href="{{ url_for('home_page') }}" >Home</a> </li>
+            <li><a href="{{ url_for('about_page') }}">About the Creator</a></li>
+            <li><a href="{{ url_for('market_page') }}"class="active">Market</a></li>
+            <li><a href="{{ url_for('blog_page') }}">Blog</a></li>
+            <li><a href="{{ url_for('contact_page') }}"> Contact</a></li>
+        </ul>
+        <div class="main">
+            <div class="bx bx-menu" id="menu-icon"></div>
+        </div>
+
+    </header>
+    <div class="tables">
+        <div class="table-cont">
+            <table class="cont-tables">
+                <thead>
+                    <tr class="table-hrow">
+                        <th scope="col">ID</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Barcode</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Options</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in items %}
+                        <tr id="tr12">
+                            <td>{{ item.id }}</td>
+                            <td>{{ item.name }}</td>
+                            <td>{{ item.barcode }}</td>
+                            <td>{{ item.price }}$</td>
+                            <td>
+                                <button class="btn btn-outline btn-info" id="bt23">More Info</button>
+                                <button class="btn btn-outline btn-success" id="bt24">Purchase this Item</button>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>   
+    
+    <!--js-link-->
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+     <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
+     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+ 
+</body>
+</html>

@@ -303,4 +303,52 @@ header{
     position: absolute;
     inset: auto 10px 10px 10px;
 }
-/*The about page things*/
+/*The market page things*/
+.tables {
+    margin-top: 50px;
+    padding: 3rem;
+}
+
+.table-cont {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.cont-tables {
+    margin: 25px auto;
+    font-size: 0.9rem;
+    width: 80%;
+    border-radius: 1rem;
+    border-collapse: collapse;
+    overflow: hidden;
+}
+
+/* Header row */
+.cont-tables thead tr {
+    background-color: #ff7b00;
+    color: #eee;
+    text-align: left;
+}
+
+/* Apply border radius to header cells */
+.cont-tables thead th:first-child {
+    border-top-left-radius: 1rem;
+}
+.cont-tables thead th:last-child {
+    border-top-right-radius: 1rem;
+}
+
+/* Optional: borders for table cells */
+.cont-tables th,
+.cont-tables td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+}
+#bt23{
+    background-color: #ff7b00;
+    border-radius: 1rem;
+}
+#bt24{
+    background-color: rgb(72, 255, 0);
+    border-radius: 1rem;
+}
