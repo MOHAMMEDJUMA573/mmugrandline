@@ -1,9 +1,13 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
+from datetime import datetime 
 app = Flask(__name__)
 
 @app.route("/")
 @app.route("/Home")
 def home_page():
+    visitor_ip = request.remote_addr
+    with open("visits.log", "a") as f:
+        f.write(f"{datetime.now()} - {visitor_ip}\n")
     return render_template("home.html")
 
 """@app.route("/about/<username>")
