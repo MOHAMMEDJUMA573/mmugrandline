@@ -1,6 +1,20 @@
 from flask import Flask, render_template, request
+from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime 
+
 app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///market.db'
+db = SQLAlchemy(app)
+
+class Item(db.Model):
+    id = db.Column(db.Integer(), primary_key=True)
+    name = db.Column(db.String(length=30), nullable=False, unique=True)
+    price = db.Column(db.Integer(), nullable=False)  # <-- fixed here
+    barcode = db.Column(db.String(length=12), nullable=False, unique=True)
+    description = db.Column(db.String(length=1024), nullable=False, unique=True)
+
+    def __repr__(self):
+        return f"Item: {self.name}"
 
 @app.route("/")
 @app.route("/Home")
@@ -20,11 +34,7 @@ def about_page():
 # Market route
 @app.route("/market")
 def market_page():
-    items = [
-        {'id': 1, 'name': 'Me!', 'barcode': '01', 'price': "priceless"},
-        {'id': 2, 'name': 'You', 'barcode': '02', 'price': 50},
-        {'id': 3, 'name': 'We!', 'barcode': '03', 'price': "-50+Me!"}
-    ]
+    items = Item.query.all()
     return render_template('market.html', items=items)
 # Contact route
 @app.route("/contact")

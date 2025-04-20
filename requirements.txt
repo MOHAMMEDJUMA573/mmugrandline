@@ -1,3 +1,4 @@
 Flask
 Flask-Session
 gunicorn==23.0.0
+Flask-SQLAlchemy
