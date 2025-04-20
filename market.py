@@ -33,3 +33,6 @@ def login_page():
 @app.route("/register")
 def register_page():
     return render_template("register.html")
+@app.route("/logging")
+def logging_page():
+    return render_template("not.html")
