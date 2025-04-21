@@ -90,3 +90,52 @@
 .register-link p a:hover{
     text-decoration: underline;
 }
+/* Flash container */
+.alert {
+    padding: 15px 20px;
+    border-radius: 8px;
+    margin: 10px 0;
+    font-size: 16px;
+    position: relative;
+    color: #fff;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Close button */
+.alert .close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: #fff;
+    cursor: pointer;
+}
+
+/* Success message */
+.alert-success {
+    background-color: #28a745;
+}
+
+/* Error or danger */
+.alert-danger {
+    background-color: #dc3545;
+}
+
+/* Info message */
+.alert-info {
+    background-color: #17a2b8;
+}
+
+/* Warning message */
+.alert-warning {
+    background-color: #ffc107;
+    color: #212529;
+}
+
+/* Fade in animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}

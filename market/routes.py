@@ -1,7 +1,8 @@
-from market import app
-from flask import render_template, request
+from market import app, db
+from flask import render_template, redirect, url_for, flash, request, get_flashed_messages
 from datetime import datetime 
-from market.models import Item
+from market.models import Item, User
+from market.forms import RegisterForm
 
 @app.route("/")
 @app.route("/Home")
@@ -35,10 +36,20 @@ def blog_page():
 @app.route("/login")
 def login_page():
     return render_template("login.html")
-#Login route
-@app.route("/register")
+@app.route("/register", methods=["GET", "POST"])
 def register_page():
-    return render_template("register.html")
+    form = RegisterForm()
+    if form.validate_on_submit():
+        user_to_create = User(username=form.username.data,
+                              email_address=form.email_address.data,
+                              password=form.password1.data) 
+        db.session.add(user_to_create)
+        db.session.commit()
+        return redirect(url_for("login_page"))   
+    if form.errors != {}:
+        for err_msg in form.errors.values():
+            flash(f"There was an error with creating a user: {err_msg}", category='danger')    
+    return render_template("register.html", form=form)
 #logging in route
 @app.route("/logging")
 def logging_page():
