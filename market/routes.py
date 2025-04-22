@@ -64,7 +64,7 @@ def register_page():
         for err_msg in form.errors.values():
             flash(f"There was an error with creating a user: {err_msg}", category='danger')    
     return render_template("register.html", form=form)
-#logging in route
-@app.route("/logging")
-def logging_page():
-    return render_template("not.html")
+@app.route('/mypeople')
+def users_page():
+    users = User.query.all()
+    return render_template('not.html', users=users)
