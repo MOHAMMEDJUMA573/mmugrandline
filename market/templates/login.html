@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>®️GL_sign_in®️</title>
+    <title>®️GL_Login®️</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/log.css') }}">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet"/>
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
@@ -16,11 +16,11 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            background: url("{{ url_for('static', filename='images/img4.jpg') }}") no-repeat;
+            background: url("{{ url_for('static', filename='images/img1.jpeg') }}") no-repeat;
             background-size: cover;
             background-position: center;
         }
-    </style> 
+    </style>   
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-JHBM64M0VE"></script>
     <script>
@@ -29,30 +29,47 @@
     gtag('js', new Date());
 
     gtag('config', 'G-JHBM64M0VE');
-    </script>       
+    </script>     
 </head>
 
 <body>
     <div class="wrapper">
-        <form action="/logging">
-            <h1>Login</h1>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+           {% for category, message in messages %}
+           <div class="alert alert-{{ category }}">
+                <button type="button" class="m1-2 mb-1 close" data-dismiss="alert" aria-label="Close">
+                    <a href="{{ url_for('login_page') }}" style="color: aqua;">
+                        <span aria-hidden="true"  >&times;</span>
+                    </a>
+                </button>
+            {{ message }}
+            </div>
+           {% endfor %}
+        {% endif %}
+        {% endwith %}
+        {% block body %}{% endblock %}
+        <form action="{{ url_for('login_page') }}" method="post">
+            {{ form.hidden_tag() }}
+            <h1>®️GL_Login®️</h1>
+        
             <div class="input-box">
-                <input type="text" placeholder="username" required>
+                {{ form.username(class="input", placeholder="Username") }}
                 <i class="bx bxs-user"></i>
             </div>
+
             <div class="input-box">
-                <input type="password" placeholder="password" required>
+                {{ form.password(class="input", placeholder="Password") }}
                 <i class="bx bxs-lock-alt"></i>
+            </div>        
+            {{ form.submit(class="btn") }}
+        
+            <div class="register-link"">
+                <p>
+                    Do not have an account? <a href="{{url_for('register_page')}}"  style="color:#ff7b00;">Register</a>
+                </p>
             </div>
-            <div class="remember-forgot">
-                <label> <input type="checkbox">Remember me</label>
-                <a href="#">Forgot password?</a>
-            </div>
-            <button type="submit" class="btn">Login</button>
-            <div class="register-link">
-                <p>Don't have an account? <a href="{{ url_for('register_page') }}">Register!</a></p>
-            </div>
-        </form>
+        </form>        
     </div>    
     <!--js-link-->
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>

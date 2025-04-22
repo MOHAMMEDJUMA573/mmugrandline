@@ -23,7 +23,7 @@
 
 <body id="mrktb" class="mkrtbay">
     <header style="padding-bottom: 50px;">
-        <a href="#" class="logo"><i class="ri-home-heart-fill"></i><span>®️G_L(MMU)®️</span> </a>
+        <a href="{{ url_for('home_page') }}" class="logo"><i class="ri-home-heart-fill"></i><span>®️G_L(MMU)®️</span> </a>
         <ul class="navbar">
             <li><a href="{{ url_for('home_page') }}" >Home</a> </li>
             <li><a href="{{ url_for('about_page') }}">About the Creator</a></li>
@@ -31,9 +31,29 @@
             <li><a href="{{ url_for('blog_page') }}">Blog</a></li>
             <li><a href="{{ url_for('contact_page') }}"> Contact</a></li>
         </ul>
-        <div class="main">
-            <div class="bx bx-menu" id="menu-icon"></div>
-        </div>
+        {% if current_user.is_authenticated %}
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" style="color: lawngreen; font-weight: bold">
+                        <i class="fas fa-coins"></i>
+                        {{ current_user.prettier_budget }}
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-market">Welcome, {{ current_user.username }}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Logout</a>
+                </li>
+            </ul>
+          {% else %}
+            <div class="main">
+                <a href="{{ url_for('login_page') }}" class="user"><i class="ri-user-fill"></i>Sign In</a>
+                <a href="{{ url_for('register_page') }}">Register</a>
+                <div class="bx bx-menu" id="menu-icon"></div>
+            </div>
+          {% endif %}
+        
 
     </header>
     <div class="tables">
@@ -54,7 +74,7 @@
                             <td>{{ item.id }}</td>
                             <td>{{ item.name }}</td>
                             <td>{{ item.barcode }}</td>
-                            <td>{{ item.price }}$</td>
+                            <td>{{ item.price }} Ksh</td>
                             <td>
                                 <button class="btn btn-outline btn-info" id="bt23">More Info</button>
                                 <button class="btn btn-outline btn-success" id="bt24">Purchase this Item</button>

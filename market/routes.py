@@ -2,7 +2,9 @@ from market import app, db
 from flask import render_template, redirect, url_for, flash, request, get_flashed_messages
 from datetime import datetime 
 from market.models import Item, User
-from market.forms import RegisterForm
+from market.forms import RegisterForm, LoginForm
+from flask_login import login_user
+
 
 @app.route("/")
 @app.route("/Home")
@@ -33,9 +35,21 @@ def contact_page():
 def blog_page():
     return render_template("blog.html")
 #Login route
-@app.route("/login")
+@app.route("/login", methods=["GET", "POST"])
 def login_page():
-    return render_template("login.html")
+    form = LoginForm()
+    if form.validate_on_submit():
+        attempted_user = User.query.filter_by(username=form.username.data).first()
+        if attempted_user and attempted_user.check_password_correction(attempted_password=form.password.data):
+            login_user(attempted_user)
+            flash(f"Success You are logged in as {attempted_user.username}",category='success')
+            return redirect(url_for('market_page'))
+        else: 
+            flash(f"username and password mismatch! Please try Again!", category='danger')
+        
+    return render_template("login.html", form=form)
+
+
 @app.route("/register", methods=["GET", "POST"])
 def register_page():
     form = RegisterForm()

@@ -171,6 +171,10 @@ header{
     .arrows{
         top: 10%;
     }
+    .nav-link{
+        display: none;
+        z-index: -20;
+    }
         
 }
 * css slider */

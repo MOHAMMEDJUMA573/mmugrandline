@@ -5,3 +5,4 @@ Flask-SQLAlchemy
 flask-wtf
 email_validator
 flask_bcrypt
+flask_login
