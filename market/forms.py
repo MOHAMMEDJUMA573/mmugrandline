@@ -2,6 +2,8 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField
 from wtforms.validators import Length, Email, EqualTo, DataRequired, ValidationError
 from market.models import User
+from flask_login import login_user, logout_user, login_required, current_user
+
 
 class RegisterForm(FlaskForm):
     def validate_username(self, username_to_check):
@@ -24,3 +26,9 @@ class LoginForm(FlaskForm):
     username = StringField(label="username", validators=[DataRequired()])
     password = PasswordField(label="password", validators=[DataRequired()])
     submit = SubmitField(label="Login")
+
+class PurchaseItemForm(FlaskForm):
+    submit = SubmitField(label='Purchase')
+
+class SellItemForm(FlaskForm):
+    submit = SubmitField(label="Sell")

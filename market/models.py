@@ -16,6 +16,13 @@ class User(db.Model, UserMixin):
     items = db.relationship('Item', backref='owned_user', lazy=True)
 
     @property
+    def prettier_budget(self):
+        if len(str(self.budget)) >= 4:
+            return f'{str(self.budget)[:-3]},{str(self.budget)[-3:]}$'
+        else:
+            return f"{self.budget}$"
+
+    @property
     def password(self):
         return self.password
     
@@ -26,6 +33,7 @@ class User(db.Model, UserMixin):
     def check_password_correction(self, attempted_password):
         return bcrypt.check_password_hash(self.pass_hash, attempted_password)
 
+
 class Item(db.Model):
     id = db.Column(db.Integer(), primary_key=True)
     name = db.Column(db.String(length=30), nullable=False, unique=True)
@@ -35,4 +43,24 @@ class Item(db.Model):
     owner = db.Column(db.Integer(), db.ForeignKey('user.id'))
 
     def __repr__(self):
-        return f"Item {self.name}"
+        return f'Item {self.name}'
+
+    def buy(self, user):
+        # Ensure the user has enough funds and update their budget
+        if user.budget >= self.price:
+            self.owner = user.id
+            user.budget -= self.price
+            db.session.commit()  # Ensure the changes are saved
+        else:
+            raise ValueError("Insufficient funds to purchase the item")
+
+    def sell(self, user):
+        """Handles selling the item, removes owner, and adds to user's budget"""
+        self.owner = None
+        user.budget += self.price
+        db.session.commit()  # Ensure the changes are committed
+
+    def can_purchase(self, user):
+        # Ensure user has enough budget to purchase the item
+        return user.budget >= self.price  # `user.budget` should be the correct reference
+
